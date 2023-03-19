@@ -65,6 +65,9 @@ def get_coordinates():
         # Show the results
         return jsonify(results)
 
+
+
+
 # The html page
 @app.route("/html")
 def html():
@@ -72,4 +75,4 @@ def html():
 
 # execute the code
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
