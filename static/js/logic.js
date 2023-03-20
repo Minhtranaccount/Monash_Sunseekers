@@ -11,12 +11,12 @@ console.log(data);
 let postcodeMarkers = [];
 
 // Define function to get fill color based on the capacity
-function fillColor1(capacity) {
-  if (capacity > 70000) {return  '#800026'}
-  else if (capacity > 55000) {return '#BD0026'}
-  else if (capacity > 40000){return '#E31A1C'}
-  else if (capacity > 25000) {return '#FC4E2A'}
-  else if (capacity > 10000){return '#FD8D3C'} 
+function fillColor1(installations) {
+  if (installations > 15000) {return  '#800026'}
+  else if (installations > 12000) {return '#BD0026'}
+  else if (installations > 9000){return '#E31A1C'}
+  else if (installations > 6000) {return '#FC4E2A'}
+  else if (installations > 3000){return '#FD8D3C'} 
   else {return '#FEB24C'}};
 
 for (let i = 0; i < data.length; i++) {
@@ -25,8 +25,8 @@ for (let i = 0; i < data.length; i++) {
     L.circle([data[i].Latitude,data[i].Longitude], {
       fillOpacity: 0.9,
       color: "white",
-      fillColor: fillColor1(data[i].Capacity),
-      radius: data[i].Installations/5}).bindPopup("<h3>" + "Postcode: " + data[i].postcode + ", " + "Suburb: " + data[i].Suburb + "</h3>" + "<hr>" + "<h4>" + "Current Capacity: " + data[i].Capacity + "</h4>"+ "<hr>" + "<h4>" + "Current Installations: " + data[i].Installations +"</h4>" )
+      fillColor: fillColor1(data[i].Installations),
+      radius: data[i].Capacity/30}).bindPopup("<h3>" + "Postcode: " + data[i].postcode + ", " + "Suburb: " + data[i].Suburb + "</h3>" + "<hr>" + "<h4>" + "Current Capacity: " + data[i].Capacity + "</h4>"+ "<hr>" + "<h4>" + "Current Installations: " + data[i].Installations +"</h4>" )
   );
 }
 
@@ -44,9 +44,10 @@ for (let i = 0; i < data.length; i++) {
   // loop through the data array, create a new marker, and push it to the cityMarkers array
   potentialMarkers.push(
     L.circle([data[i].Latitude,data[i].Longitude], {
-      fillOpacity: 0.2,
+      fillOpacity: 0.25,
+      color: "#ffffff00",
       fillColor: "blue",
-      radius: data[i].Potential_kilowatts/200}).bindPopup("<h3>" + "Postcode: " + data[i].postcode + "-" + "Suburb: " + data[i].Suburb + "</h3>" + "<hr>" + "<h4>" + "Potential Capacity: " + data[i].Potential_kilowatts + "</h4>")
+      radius: data[i].Potential_kilowatts/100}).bindPopup("<h3>" + "Postcode: " + data[i].postcode + ", " + "Suburb: " + data[i].Suburb + "</h3>" + "<hr>" + "<h4>" + "Potential Capacity: " + data[i].Potential_kilowatts + "</h4>")
   );
 }
 
@@ -92,7 +93,7 @@ let legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
 
     let div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 10000, 25000, 40000, 55000, 70000],
+        grades = [0, 3000, 6000, 9000, 12000, 15000],
         labels = [];
 
     // loop through our density intervals and generate a label with a colored square for each interval

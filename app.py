@@ -19,13 +19,8 @@ def get_db_connection():
 # List all the available routes.
 # The Welcome page
 @app.route("/")
-def welcome():
-    return (
-        f"Welcome to our Home Page!<br/>"
-        f"Postcode Co-ordinates: <a href=\"/api/coordinates\">api/coordinates</a><br/>"
-        f"Link back to HTML"
-        f"<br/>"
-      )
+def home():
+    return render_template("index.html")
 
 # The API Page
 # Define a Flask route to retrieve data from the database
@@ -66,9 +61,9 @@ def get_coordinates():
         return jsonify(results)
 
 # The html page
-@app.route("/html")
+@app.route("/map")
 def html():
-    return render_template("index.html")
+    return render_template("map.html")
 
 # execute the code
 if __name__ == '__main__':

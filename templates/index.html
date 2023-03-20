@@ -1,39 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>The Monash Sun Seeker</title>
-
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
-    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-    crossorigin=""/>
-
-  <!-- Local CSS -->
-  <!-- <link rel="stylesheet" type="text/css" href="static/css/style.css"> -->
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-
-  <!-- Leaflet JavaScript -->
-  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
-  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-  crossorigin=""></script>
-  
-  <!-- D3 library -->
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-
+  <title>BootCamp SunSeekers</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+
 <body>
 
-  <div id="map"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>BOOTCAMP SUNSEEKERS</h1>
+        <p>Use the interactive charts below to explore the dataset</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well">
+          <h5>State:</h5>
+          <select id="selDataset">
+            <option value="dataset1">VIC</option>
+            <option value="dataset2">NSW</option>
+            <option value="dataset3">WA</option>
+            <option value="dataset4">TAS</option>
+            <option value="dataset5">SA</option>
+            <option value="dataset6">NT</option>
+          </select>
+          
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">State General Info</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body"></div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div id="bar"></div>
+        </select>
+      </div>
+      <div class="col-md-5">
+        <div id="gauge"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="bubble"></div>
+      </div>
+    </div>
+  </div>
 
-  <!-- API Key -->
-  <!-- <script type="text/javascript" src="Project_3-main/lat and long/config.py"></script> -->
-
-  <!-- Our JavaScript -->
-  <!-- <script type="text/javascript" src="static/js/logic.js"></script> -->
-  <script type="text/javascript" src="{{ url_for('static', filename='js/logic.js') }}"></script>
-
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="static/js/chart.js"></script>
+  <!-- <script src="./static/js/bonus.js"></script> -->
+  
 </body>
+
 </html>
