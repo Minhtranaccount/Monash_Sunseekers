@@ -1,0 +1,7 @@
+flask
+flask-sqlalchemy
+pandas
+sqlalchemy
+sqlalchemy.ext.declarative
+sqlalchemy.orm
+os
