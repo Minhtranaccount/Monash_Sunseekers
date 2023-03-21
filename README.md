@@ -16,15 +16,14 @@ Technologies used
      Flask
      Javascript
 
-Process
-
+This is navigation to read our project;
 
      Firstly clone the file from repositories to your machine, and run the following command
      chmod a+x run.sh
      Then you can test the application by running the following in your command line.
      ./run.sh
-     Second copy the link and paste in web.
-     Finally you can click and see the page.
+     Second copy the link and paste in browser.
+     Finally you can see the page and click to see the map and chart in click button.
 
 
 
