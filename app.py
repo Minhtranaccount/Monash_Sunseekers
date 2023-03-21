@@ -3,6 +3,7 @@ from flask import Flask, jsonify, render_template
 from sqlalchemy import create_engine, Column, Integer, String, Float, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+<<<<<<< HEAD
 
 # Flask setup
 app = Flask(__name__)
@@ -36,6 +37,41 @@ class APVI_coordinates(Base):
     state = Column(String)
     sa4name = Column(String)
 
+=======
+
+# Flask setup
+app = Flask(__name__, static_folder='static')
+
+# Set up SQLAlchemy
+engine = create_engine('sqlite:///db.sqlite')
+Base = declarative_base(bind=engine)
+Session = sessionmaker(bind=engine)
+
+
+# Define the SQLAlchemy model
+class APVI_coordinates(Base):
+    __tablename__ = 'APVI_coordinates'
+
+    id = Column(Integer, primary_key=True)
+    postcode = Column(String)
+    Lat_precise = Column(Float)
+    Long_precise = Column(Float)
+    instals = Column(Integer)
+    estimated_dwellings = Column(Integer)
+    density = Column(Float)
+    capacity = Column(Float)
+    capunder10 = Column(Float)
+    cap10_100 = Column(Float)
+    capover100 = Column(Float)
+    countunder10 = Column(Integer)
+    count10_100 = Column(Integer)
+    countover100 = Column(Integer)
+    pot_kw = Column(Float)
+    locality = Column(String)
+    state = Column(String)
+    sa4name = Column(String)
+
+>>>>>>> 6fb0caa5d29fc5dc03575fc0f70868ae0b48a97f
 
 # List all the available routes.
 # The Welcome page
@@ -48,6 +84,11 @@ def welcome():
         f"Region data: <a href=\"/api/regions\">api/regions</a><br/>"
         f"Link to maps page: <a href=\"/maps\">maps</a><br/>"
         f"Link to charts page: <a href=\"/charts\">charts</a><br/>"
+<<<<<<< HEAD
+=======
+        f"Link to charts page: <a href=\"/khin\">khin</a><br/>"
+        f"Link to charts page: <a href=\"/reinier\">reinier</a><br/>"
+>>>>>>> 6fb0caa5d29fc5dc03575fc0f70868ae0b48a97f
         f"<br/>"
     )
 
@@ -123,9 +164,15 @@ def get_states():
         result['Capacity_under_10kw'] = row.Capacity_under_10kw
         result['Capacity_10_to_100kw'] = row.Capacity_10_to_100kw
         result['Capacity_over_100kw'] = row.Capacity_over_100kw
+<<<<<<< HEAD
         result['Count_under_10kw'] = row.Capacity_over_100kw
         result['Count_10_to_100kw'] = row.Capacity_over_100kw
         result['Count_over_100kw'] = row.Capacity_over_100kw
+=======
+        result['Count_under_10kw'] = row.Count_under_10kw
+        result['Count_10_to_100kw'] = row.Count_10_to_100kw
+        result['Count_over_100kw'] = row.Count_over_100kw
+>>>>>>> 6fb0caa5d29fc5dc03575fc0f70868ae0b48a97f
         result['Installations'] = row.Installations
         result['Est_Dwellings'] = row.Est_Dwellings
         result['Density'] = row.Density
@@ -169,9 +216,15 @@ def get_regions():
         result['Capacity_under_10kw'] = row.Capacity_under_10kw
         result['Capacity_10_to_100kw'] = row.Capacity_10_to_100kw
         result['Capacity_over_100kw'] = row.Capacity_over_100kw
+<<<<<<< HEAD
         result['Count_under_10kw'] = row.Capacity_over_100kw
         result['Count_10_to_100kw'] = row.Capacity_over_100kw
         result['Count_over_100kw'] = row.Capacity_over_100kw
+=======
+        result['Count_under_10kw'] = row.Count_under_10kw
+        result['Count_10_to_100kw'] = row.Count_10_to_100kw
+        result['Count_over_100kw'] = row.Count_over_100kw
+>>>>>>> 6fb0caa5d29fc5dc03575fc0f70868ae0b48a97f
         result['Installations'] = row.Installations
         result['Est_Dwellings'] = row.Est_Dwellings
         result['Density'] = row.Density
@@ -191,7 +244,20 @@ def maps():
 # The charts page
 @app.route("/charts")
 def charts():
+<<<<<<< HEAD
+=======
+    return render_template("chart.html")
+
+# The khin test page
+@app.route("/khin")
+def khin():
+>>>>>>> 6fb0caa5d29fc5dc03575fc0f70868ae0b48a97f
     return render_template("index.html")
+
+# The reinier test page
+@app.route("/reinier")
+def reinier():
+    return render_template("reinier.html")
 
 # execute the code
 if __name__ == '__main__':

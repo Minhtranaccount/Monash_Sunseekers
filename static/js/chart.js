@@ -98,8 +98,7 @@ d3.json(url).then(function(data)
         let y1 = [];
 
         if (dataset === 'dataset1') {
-                x = top_ten_values1.reverse();
-                y = top_ten_id1.reverse().map(item =>`PC: ${item}`);
+
                 let  top_ten_values1 = [];
                 let  top_ten_id1  = [];
                 for (let i = 0; i < 10; i++) {
@@ -107,10 +106,12 @@ d3.json(url).then(function(data)
                 top_ten_values1.push(Vics[i].Potential_kilowatts);
                 top_ten_id1.push(Vics[i].postcode);
                 };
+                x = top_ten_values1.reverse();
+                y = top_ten_id1.reverse().map(item =>`PC: ${item}`);
                 // Bubble charts
                 for (let i = 0; i < NSWs.length; i++) {
-                    x1.push(NSWs[i].postcode);
-                    y1.push(NSWs[i].Est_Dwellings);}
+                    x1.push(Vics[i].postcode);
+                    y1.push(Vics[i].Est_Dwellings);}
 
           }
         
@@ -200,11 +201,10 @@ d3.json(url).then(function(data)
         // Bubble Chart
         Plotly.restyle('bubble', "x", [x1]);
         Plotly.restyle('bubble', "y", [y1]);
-        Plotly.restyle('bubble', "text", [labels]);
         Plotly.restyle('bubble', "marker.color", [x1]);
-        Plotly.restyle('bubble', "marker.size", [y1])
+        Plotly.restyle('bubble', "marker.size", [y1/2])
         
     };
 
 
-})
+});
