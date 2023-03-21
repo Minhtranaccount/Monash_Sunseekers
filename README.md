@@ -17,6 +17,16 @@ Technologies used
      Javascript
 
 
+Process
+
+     Firstly clone the file from repositories to your machine, and run the following command
+     chmod a+x run.sh
+     Then you can test the application by running the following in your command line.
+     ./run.sh
+     Second copy the link and paste in web.
+     Finally you can click and see the page.
 
 
 
+
+  
