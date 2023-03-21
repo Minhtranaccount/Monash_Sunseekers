@@ -9,6 +9,12 @@ This project utilizes a datasource collected by Australian PV Institute and Aust
 
 We used SQL to read the data and the project is powered by a Python Flask API and includes HTML/CSS, JavaScript.
 
+Technologies used
+
+     SQL
+     Python
+     Flask
+     Javascript
 
 
 
