@@ -16,8 +16,8 @@ Technologies used
      Flask
      Javascript
 
-
 Process
+
 
      Firstly clone the file from repositories to your machine, and run the following command
      chmod a+x run.sh
