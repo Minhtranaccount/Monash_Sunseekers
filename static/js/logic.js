@@ -1,5 +1,5 @@
 // Use this link to get the GeoJSON data.
-let url = "/api/coordinates";
+let url = "/api/postcode";
   
 // Wrap the json in a promise to return data
 d3.json(url).then(function (response) {
@@ -7,7 +7,7 @@ d3.json(url).then(function (response) {
   let data = response;
 console.log(data);
 
-// An array that will store the created postcodeMarkers
+// An array that will store the created postcodeMarkers of the current installations and capacity
 let postcodeMarkers = [];
 
 // Define function to get fill color based on the capacity
@@ -20,7 +20,7 @@ function fillColor1(installations) {
   else {return '#FEB24C'}};
 
 for (let i = 0; i < data.length; i++) {
-  // loop through the data array, create a new marker, and push it to the cityMarkers array
+  // loop through the data array, create a new marker, and push it to the postcodeMarkers array
   postcodeMarkers.push(
     L.circle([data[i].Latitude,data[i].Longitude], {
       fillOpacity: 0.9,
@@ -35,13 +35,11 @@ for (let i = 0; i < data.length; i++) {
 let postcodeLayer = L.layerGroup(postcodeMarkers);
 
 
-// An array that will store the created postcodeMarkers
+// An array that will store the created potentialMarkers of potential solar energy capacity
 let potentialMarkers = [];
 
-// Define function to get fill color based on the capacity
-
 for (let i = 0; i < data.length; i++) {
-  // loop through the data array, create a new marker, and push it to the cityMarkers array
+  // loop through the data array, create a new marker, and push it to the potentialMarkers array
   potentialMarkers.push(
     L.circle([data[i].Latitude,data[i].Longitude], {
       fillOpacity: 0.25,
@@ -51,8 +49,28 @@ for (let i = 0; i < data.length; i++) {
   );
 }
 
+// Created another layer of the potential capacity with the circle radius as Potential_kilowatts/30 (the same percentage as the current's to give real comparision)
+
 // Add all the potentialMarkers to a new layer group.
 let potentialLayer = L.layerGroup(potentialMarkers);
+
+// An array that will store the created potentialMarkers1 of potential solar energy capacity
+let potentialMarkers1 = [];
+
+for (let i = 0; i < data.length; i++) {
+  // loop through the data array, create a new marker, and push it to the potentialMarkers array
+  potentialMarkers1.push(
+    L.circle([data[i].Latitude,data[i].Longitude], {
+      fillOpacity: 0.25,
+      color: "#ffffff00",
+      fillColor: "blue",
+      radius: data[i].Potential_kilowatts/30}).bindPopup("<h3>" + "Postcode: " + data[i].postcode + ", " + "Suburb: " + data[i].Suburb + "</h3>" + "<hr>" + "<h4>" + "Potential Capacity: " + data[i].Potential_kilowatts + "</h4>")
+  );
+}
+
+// Add all the potentialMarkers1 to a new layer group.
+let potentialLayer1 = L.layerGroup(potentialMarkers1);
+
 
 // Define variables for our tile layers.
 let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -72,7 +90,8 @@ let baseMaps = {
 // Overlays that can be toggled on or off
 let overlayMaps = {
   Current: postcodeLayer,
-  Potential: potentialLayer
+  PotentialVisual: potentialLayer,
+  PotentialReal: potentialLayer1
 };
 
 // Create a map object, and set the default layers.

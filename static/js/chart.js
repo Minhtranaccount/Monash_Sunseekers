@@ -1,5 +1,5 @@
 // Read the url
-let url = "/api/coordinates";
+let url = "/api/postcode";
 d3.json(url).then(function(data) 
 {
     console.log(data);
@@ -203,25 +203,6 @@ d3.json(url).then(function(data)
         Plotly.restyle('bubble', "text", [labels]);
         Plotly.restyle('bubble', "marker.color", [x1]);
         Plotly.restyle('bubble', "marker.size", [y1])
-        
-
-
-
-    //     // Bubble Chart
-    //     Plotly.restyle('bubble', "x", [id]);
-    //     Plotly.restyle('bubble', "y", [values]);
-    //     Plotly.restyle('bubble', "text", [labels]);
-    //     Plotly.restyle('bubble', "marker.color", [id]);
-    //     Plotly.restyle('bubble', "marker.size", [values]);
-
-    //     // Demograhic Info
-    //     metainfo = data.metadata.filter(sample => sample.id == inputValue)[0];
-        
-    //     // Clear out current contents in the panel
-    //     d3.select("#sample-metadata").html("");
-
-    //     // Display each key-value pair from the metadata JSON object
-    //     for (key in metainfo){d3.select("#sample-metadata").append("p").text(`${key}: ${metainfo[key]}`)};
         
     };
 
