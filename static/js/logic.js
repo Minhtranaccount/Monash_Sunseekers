@@ -21,12 +21,13 @@ function fillColor1(installations) {
 
 for (let i = 0; i < data.length; i++) {
   // loop through the data array, create a new marker, and push it to the postcodeMarkers array
+  // Note that the current capacity (Radius) excludes Capacity bigger than 100kw which are the electricity company. We only target the residential houses that have Capacity less than 100kw
   postcodeMarkers.push(
     L.circle([data[i].Latitude,data[i].Longitude], {
       fillOpacity: 0.9,
       color: "white",
       fillColor: fillColor1(data[i].Installations),
-      radius: data[i].Capacity/30}).bindPopup("<h3>" + "Postcode: " + data[i].postcode + ", " + "Suburb: " + data[i].Suburb + "</h3>" + "<hr>" + "<h4>" + "Current Capacity: " + data[i].Capacity + "</h4>"+ "<hr>" + "<h4>" + "Current Installations: " + data[i].Installations +"</h4>" )
+      radius: (data[i].Capacity_10_to_100kw+data[i].Capacity_under_10kw)/30}).bindPopup("<h3>" + "Postcode: " + data[i].postcode + ", " + "Suburb: " + data[i].Suburb + "</h3>" + "<hr>" + "<h4>" + "Current Capacity: " + (data[i].Capacity_10_to_100kw+data[i].Capacity_under_10kw) + "</h4>"+ "<hr>" + "<h4>" + "Current Installations: " + data[i].Installations +"</h4>" )
   );
 }
 
