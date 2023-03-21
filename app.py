@@ -40,7 +40,11 @@ class APVI_coordinates(Base):
 # List all the available routes.
 # The Welcome page
 @app.route("/")
-def welcome():
+def home():
+    return render_template("index.html")
+
+@app.route("/Apilinks")
+def links():
     return (
         f"Welcome to the Monash Sunseekers Home Page!<br/>"
         f"Postcode data: <a href=\"/api/postcode\">api/postcode</a><br/>"
@@ -147,6 +151,7 @@ def get_regions():
 
     # Group the results by state and sum the capacity and potential kilowatts
     region_results = session.query(
+        APVI_coordinates.state,
         APVI_coordinates.sa4name,
         func.sum(APVI_coordinates.capacity).label('Capacity'),
         func.sum(APVI_coordinates.pot_kw).label('Potential_kilowatts'),
@@ -161,11 +166,12 @@ def get_regions():
         func.sum(APVI_coordinates.density).label('Density'),    
     ).group_by(APVI_coordinates.sa4name).all()
 
-    # Convert the results to a list of dictionaries
+# Convert the results to a list of dictionaries
     region_results_list = []
     for row in region_results:
         result = {}
         result['Region'] = row.sa4name
+        result['State'] = row.state
         result['Capacity'] = row.Capacity
         result['Potential_kilowatts'] = row.Potential_kilowatts
         result['Capacity_under_10kw'] = row.Capacity_under_10kw
@@ -179,11 +185,12 @@ def get_regions():
         result['Density'] = row.Density
         region_results_list.append(result)
 
-    # Close the session
+# Close the session
     session.close()
 
-    # Return the results as JSON
+# Return the results as JSON
     return jsonify(region_results_list)
+
 
 # The maps page
 @app.route("/maps")
@@ -198,7 +205,7 @@ def charts():
 # The khin test page
 @app.route("/khin")
 def khin():
-    return render_template("index.html")
+    return render_template("khin.html")
 
 # The reinier test page
 @app.route("/reinier")
