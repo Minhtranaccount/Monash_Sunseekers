@@ -1,5 +1,5 @@
 // Use this link to get the GeoJSON data.
-let url = "/api/coordinates";
+let url = "/api/postcode";
   
 // Wrap the json in a promise to return data
 d3.json(url).then(function (response) {
@@ -7,26 +7,27 @@ d3.json(url).then(function (response) {
   let data = response;
 console.log(data);
 
-// An array that will store the created postcodeMarkers
+// An array that will store the created postcodeMarkers of the current installations and capacity
 let postcodeMarkers = [];
 
 // Define function to get fill color based on the capacity
-function fillColor1(capacity) {
-  if (capacity > 70000) {return  '#800026'}
-  else if (capacity > 55000) {return '#BD0026'}
-  else if (capacity > 40000){return '#E31A1C'}
-  else if (capacity > 25000) {return '#FC4E2A'}
-  else if (capacity > 10000){return '#FD8D3C'} 
+function fillColor1(installations) {
+  if (installations > 15000) {return  '#800026'}
+  else if (installations > 12000) {return '#BD0026'}
+  else if (installations > 9000){return '#E31A1C'}
+  else if (installations > 6000) {return '#FC4E2A'}
+  else if (installations > 3000){return '#FD8D3C'} 
   else {return '#FEB24C'}};
 
 for (let i = 0; i < data.length; i++) {
-  // loop through the data array, create a new marker, and push it to the cityMarkers array
+  // loop through the data array, create a new marker, and push it to the postcodeMarkers array
+  // Note that the current capacity (Radius) excludes Capacity bigger than 100kw which are the electricity company. We only target the residential houses that have Capacity less than 100kw
   postcodeMarkers.push(
     L.circle([data[i].Latitude,data[i].Longitude], {
       fillOpacity: 0.9,
       color: "white",
-      fillColor: fillColor1(data[i].Capacity),
-      radius: data[i].Installations/5}).bindPopup("<h3>" + "Postcode: " + data[i].postcode + ", " + "Suburb: " + data[i].Suburb + "</h3>" + "<hr>" + "<h4>" + "Current Capacity: " + data[i].Capacity + "</h4>"+ "<hr>" + "<h4>" + "Current Installations: " + data[i].Installations +"</h4>" )
+      fillColor: fillColor1(data[i].Installations),
+      radius: (data[i].Capacity_10_to_100kw+data[i].Capacity_under_10kw)/30}).bindPopup("<h3>" + "Postcode: " + data[i].postcode + ", " + "Suburb: " + data[i].Suburb + "</h3>" + "<hr>" + "<h4>" + "Current Capacity: " + (data[i].Capacity_10_to_100kw+data[i].Capacity_under_10kw) + "</h4>"+ "<hr>" + "<h4>" + "Current Installations: " + data[i].Installations +"</h4>" )
   );
 }
 
@@ -35,23 +36,42 @@ for (let i = 0; i < data.length; i++) {
 let postcodeLayer = L.layerGroup(postcodeMarkers);
 
 
-// An array that will store the created postcodeMarkers
+// An array that will store the created potentialMarkers of potential solar energy capacity
 let potentialMarkers = [];
 
-// Define function to get fill color based on the capacity
-
 for (let i = 0; i < data.length; i++) {
-  // loop through the data array, create a new marker, and push it to the cityMarkers array
+  // loop through the data array, create a new marker, and push it to the potentialMarkers array
   potentialMarkers.push(
     L.circle([data[i].Latitude,data[i].Longitude], {
-      fillOpacity: 0.2,
+      fillOpacity: 0.25,
+      color: "#ffffff00",
       fillColor: "blue",
-      radius: data[i].Potential_kilowatts/200}).bindPopup("<h3>" + "Postcode: " + data[i].postcode + "-" + "Suburb: " + data[i].Suburb + "</h3>" + "<hr>" + "<h4>" + "Potential Capacity: " + data[i].Potential_kilowatts + "</h4>")
+      radius: data[i].Potential_kilowatts/100}).bindPopup("<h3>" + "Postcode: " + data[i].postcode + ", " + "Suburb: " + data[i].Suburb + "</h3>" + "<hr>" + "<h4>" + "Potential Capacity: " + data[i].Potential_kilowatts + "</h4>")
   );
 }
 
+// Created another layer of the potential capacity with the circle radius as Potential_kilowatts/30 (the same percentage as the current's to give real comparision)
+
 // Add all the potentialMarkers to a new layer group.
 let potentialLayer = L.layerGroup(potentialMarkers);
+
+// An array that will store the created potentialMarkers1 of potential solar energy capacity
+let potentialMarkers1 = [];
+
+for (let i = 0; i < data.length; i++) {
+  // loop through the data array, create a new marker, and push it to the potentialMarkers array
+  potentialMarkers1.push(
+    L.circle([data[i].Latitude,data[i].Longitude], {
+      fillOpacity: 0.25,
+      color: "#ffffff00",
+      fillColor: "blue",
+      radius: data[i].Potential_kilowatts/30}).bindPopup("<h3>" + "Postcode: " + data[i].postcode + ", " + "Suburb: " + data[i].Suburb + "</h3>" + "<hr>" + "<h4>" + "Potential Capacity: " + data[i].Potential_kilowatts + "</h4>")
+  );
+}
+
+// Add all the potentialMarkers1 to a new layer group.
+let potentialLayer1 = L.layerGroup(potentialMarkers1);
+
 
 // Define variables for our tile layers.
 let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -71,7 +91,8 @@ let baseMaps = {
 // Overlays that can be toggled on or off
 let overlayMaps = {
   Current: postcodeLayer,
-  Potential: potentialLayer
+  PotentialVisual: potentialLayer,
+  PotentialReal: potentialLayer1
 };
 
 // Create a map object, and set the default layers.
@@ -92,7 +113,7 @@ let legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
 
     let div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 10000, 25000, 40000, 55000, 70000],
+        grades = [0, 3000, 6000, 9000, 12000, 15000],
         labels = [];
 
     // loop through our density intervals and generate a label with a colored square for each interval

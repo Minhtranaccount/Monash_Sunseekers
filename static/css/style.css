@@ -22,3 +22,17 @@ html {
   margin-right: 8px;
   opacity: 0.7;
 }
+
+h1 {
+  margin-bottom: 15px;
+  font-size: 60px;
+  color: rgb(129, 15, 15);
+  text-align: center;
+  text-decoration: underline;
+  background-color: rgb(155, 201, 185);
+}
+
+canvas {
+	width: 100%;
+	height: auto;
+}
