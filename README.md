@@ -1,4 +1,4 @@
-# Project_3 - Bootchamp Sunseekers
+# Project_3 - Bootcamp Sunseekers
 
 About this project
 
