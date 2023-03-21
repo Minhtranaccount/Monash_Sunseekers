@@ -15,7 +15,7 @@ Session = sessionmaker(bind=engine)
 
 # Define the SQLAlchemy model
 class APVI_coordinates(Base):
-    __tablename__ = 'APVI_coordinates'
+    __tablename__ = 'Merged_APVI_Coordinates'
 
     id = Column(Integer, primary_key=True)
     postcode = Column(String)
