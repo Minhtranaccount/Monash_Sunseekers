@@ -18,6 +18,7 @@
         <p>Use the interactive charts below to explore the dataset</p>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-2">
         <div class="well">
@@ -29,6 +30,7 @@
             <option value="dataset4">TAS</option>
             <option value="dataset5">SA</option>
             <option value="dataset6">NT</option>
+            <option value="dataset7">ACT</option>
           </select>
           
         </div>
@@ -52,16 +54,30 @@
         <div id="gauge"></div>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-12">
         <div id="bubble"></div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+
   </div>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="static/js/chart.js"></script>
+  <script src="static/js/chartapp.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/chartapp.js') }}"></script> -->
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/chartstyle.css') }}">
   
 </body>
 

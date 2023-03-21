@@ -31,3 +31,8 @@ h1 {
   text-decoration: underline;
   background-color: rgb(155, 201, 185);
 }
+
+canvas {
+	width: 100%;
+	height: auto;
+}

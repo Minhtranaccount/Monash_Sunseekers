@@ -10,6 +10,7 @@ d3.json(url).then(function(data)
     let TASs = data.filter(result => result.State == "TAS");
     let SAs = data.filter(result => result.State == "SA");
     let NTs = data.filter(result => result.State == "NT");
+    let ACTs = data.filter(result => result.State == "ACT");
 
     console.log(Vics);
     // Sort the data in the descending order of Potential Capacity
@@ -19,6 +20,7 @@ d3.json(url).then(function(data)
     SAs.sort((a,b)=>b.Potential_kilowatts- a.Potential_kilowatts);
     TASs.sort((a,b)=>b.Potential_kilowatts- a.Potential_kilowatts);
     NTs.sort((a,b)=>b.Potential_kilowatts- a.Potential_kilowatts);
+    ACTs.sort((a,b)=>b.Potential_kilowatts- a.Potential_kilowatts);
 
     // Create the initial page with default graphs
     function init() {
@@ -129,6 +131,22 @@ d3.json(url).then(function(data)
             for (let i = 0; i < NSWs.length; i++) {
             x1.push(NSWs[i].postcode);
             y1.push(NSWs[i].Est_Dwellings);}
+          }
+          
+          else if (dataset === 'dataset7') {
+            let  top_ten_values7 = [];
+            let  top_ten_id7  = [];
+            for (let i = 0; i < 10; i++) {
+            // Select top 10 potential capacity  in the correct order to plot bar chart
+            top_ten_values7.push(ACTs[i].Potential_kilowatts);
+            top_ten_id7.push(ACTs[i].postcode);
+            };
+            x = top_ten_values7.reverse();
+            y = top_ten_id7.reverse().map(item =>`PC: ${item}`);
+            // Bubble charts
+            for (let i = 0; i < ACTs.length; i++) {
+            x1.push(ACTs[i].postcode);
+            y1.push(ACTs[i].Est_Dwellings);}
           }
 
           else if (dataset === 'dataset3') {

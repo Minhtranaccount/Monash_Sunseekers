@@ -1,8 +1,8 @@
 // Load D3 library
-let url = "/api/states";
+let url1 = "/api/states";
 
 // Load data using Axios
-d3.json(url).then(function(data) {
+d3.json(url1).then(function(data) {
 
   // Parse data into chartData format
   var chartData = data.map(function(state) {
