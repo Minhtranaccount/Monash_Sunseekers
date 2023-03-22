@@ -1,9 +1,9 @@
 
-let url = "suburb-2-vic.geojson";
+let data = "suburb-2-vic.geojson";
 // let url = "suburb-2-nsw.geojson";
 
 
-d3.json(url).then(function (data) {
+d3.json(data).then(function (data) {
   console.log(data);
   createFeatures(data.features);
 });
