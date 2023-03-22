@@ -7,8 +7,10 @@ d3.json(url1).then(function(data) {
   // Parse data into chartData format
   var chartData = data.map(function(state) {
     return {
-      installations: state.Installations,
-      dwellings: state.Est_Dwellings,
+      // installations: state.Installations,
+      // dwellings: state.Est_Dwellings,
+      capacity: state.Capacity,
+      potential: state.Potential_kilowatts,
       state: state.State
     };
   });
@@ -24,22 +26,40 @@ d3.json(url1).then(function(data) {
         return state.state;
       }),
       datasets: [
+        // {
+        //   label: "Installations",
+        //   data: chartData.map(function(state) {
+        //     return state.installations;
+        //   }),
+        //   backgroundColor: "rgba(255, 99, 132, 0.2)",
+        //   borderColor: "rgba(255, 99, 132, 1)",
+        //   borderWidth: 1
+        // },
+        // {
+        //   label: "Est. Dwellings",
+        //   data: chartData.map(function(state) {
+        //     return state.dwellings;
+        //   }),
+        //   backgroundColor: "rgba(54, 162, 235, 0.2)",
+        //   borderColor: "rgba(54, 162, 235, 1)",
+        //   borderWidth: 1
+        // },
         {
-          label: "Installations",
+          label: "Capacity",
           data: chartData.map(function(state) {
-            return state.installations;
-          }),
-          backgroundColor: "rgba(255, 99, 132, 0.2)",
-          borderColor: "rgba(255, 99, 132, 1)",
-          borderWidth: 1
-        },
-        {
-          label: "Est. Dwellings",
-          data: chartData.map(function(state) {
-            return state.dwellings;
+            return state.capacity;
           }),
           backgroundColor: "rgba(54, 162, 235, 0.2)",
           borderColor: "rgba(54, 162, 235, 1)",
+          borderWidth: 1
+        },
+        {
+          label: "Potential",
+          data: chartData.map(function(state) {
+            return state.potential;
+          }),
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgba(255, 99, 132, 1)",
           borderWidth: 1
         }
       ]
