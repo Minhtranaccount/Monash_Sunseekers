@@ -41,13 +41,18 @@ d3.json(url).then(function(data)
         x: top_ten_values,
         // text: top_ten_labels,
         type: "bar",
-        orientation: "h"}];
+        orientation: "h",
+        marker: {
+          color: 'rgb(250, 208, 130,0.8)',
+          opacity: 0.8}}];
             
         barlayout = {
         title: `<b>Top 10 Potential Capacity <b>`,
         xaxis: { title: "Capacity (kwh)"},
-        width: 500,
-        height: 550};
+        width: 1000,
+        height: 600,
+        
+        };
 
         Plotly.newPlot("bar", bardata, barlayout);
 
@@ -55,23 +60,34 @@ d3.json(url).then(function(data)
         // Bubble Chart
         postcode = [];
         dwellings = [];
+        suburbs = [];
+        capacity = [];
         for (let i = 0; i < Vics.length; i++) {
         postcode.push(Vics[i].postcode);
-        dwellings.push(Vics[i].Est_Dwellings);}
+        dwellings.push(Vics[i].Est_Dwellings);
+        suburbs.push(Vics[i].Suburb);
+        capacity.push(Vics[i].Capacity/3000);
+      }
+        
+        
 
         let bubbledata =[{
         x: postcode,
         y: dwellings,
+        text: suburbs,
         mode: 'markers',
         marker: {color: postcode,
-                size: dwellings/2,
-                colorscale:"Earth"}}];
+                size: capacity,
+                // colorscale:"Earth"
+              }}];
 
         let bubblelayout = {
         title: '<b>Estimated Dwellings by Postcode<b>',
         xaxis: { title: "Postcode"},
         yaxis: { title: "Estimated Dwellings"}, 
-        showlegend: false};
+        showlegend: false,
+        width: 1000,
+        height: 600};
 
         Plotly.newPlot("bubble", bubbledata, bubblelayout);
 

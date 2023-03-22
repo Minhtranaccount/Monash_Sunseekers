@@ -184,15 +184,10 @@ def maps():
 def charts():
     return render_template("chart.html")
 
-# The khin test page
-@app.route("/khin")
-def khin():
-    return render_template("khin.html")
-
-# The reinier test page
-@app.route("/reinier")
+# The 2nd chart page
+@app.route("/chart2")
 def reinier():
-    return render_template("reinier.html")
+    return render_template("chart2.html")
 
 # list the weblinks for each of the above
 @app.route("/apilinks")
@@ -204,8 +199,7 @@ def links():
         f"Region data: <a href=\"/api/regions\">api/regions</a><br/>"
         f"Link to maps page: <a href=\"/maps\">maps</a><br/>"
         f"Link to charts page: <a href=\"/charts\">charts</a><br/>"
-        f"Link to charts page: <a href=\"/khin\">khin</a><br/>"
-        f"Link to charts page: <a href=\"/reinier\">reinier</a><br/>"
+        f"Link to 2nd charts page: <a href=\"/chart2\">chart2</a><br/>"
         f"<br/>"
     )
 
