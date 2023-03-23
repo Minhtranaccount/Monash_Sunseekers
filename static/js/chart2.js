@@ -106,9 +106,9 @@ init();
 
       
       d3.select("#region_details").html("");
-      d3.select("#region_details").append("h3").text(`On this page you can select a postcode and compare a few key metrics with those of Australia.`)
+      d3.select("#region_details").append("h5").text(`On this page you can select a postcode and compare a few key metrics with those of Australia.`)
       
-      d3.select("#region_details2").append("h5").text(`The number of current installations for postcode ${activePostcode} in suburb ${activepostcodesuburb} and region ${activepostcoderegion} is ${installations_pc} with a capcity of ${totalcap0_100active_pc} kw, the average capacity per dwelling is ${cap_per_dwel_pc} 
+      d3.select("#region_details2").append("h8").text(`The number of current installations for postcode ${activePostcode} in suburb ${activepostcodesuburb} and region ${activepostcoderegion} is ${installations_pc} with a capcity of ${totalcap0_100active_pc} kw, the average capacity per dwelling is ${cap_per_dwel_pc} 
        state is ${activepostcodesate} and the potential per dwelling is ${pot_per_dwel_pc} kw. `);
 
       createbarchart(y_ax1, x_ax1, x_ax1);
@@ -136,7 +136,7 @@ function createbarchart(y_ax1, x_ax1, x_ax1) {
   let layout = {
     title: "Capacity per installation",
     yaxis: { title: "Capacity kw" },
-    yaxis: {range: [0, 50]}
+    yaxis: {range: [0, 30]}
   };
 
   Plotly.newPlot("bar", barChart, layout);
@@ -160,7 +160,7 @@ function createbarchart2(y_ax2, x_ax2, x_ax2) {
   let layout = {
     title: "Capacity per dwelling",
     yaxis: { title: "Capacity kw" },
-    yaxis: {range: [0, 25]}
+    yaxis: {range: [0, 15]}
   };
 
   Plotly.newPlot("bar2", barChart, layout);
