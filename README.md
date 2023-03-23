@@ -7,14 +7,14 @@ The objective for this project was to analyse data in the solar energy industry 
 This project utilizes data sourced from the Australian PV Institute's website and integrates it with Australian Postcodes found using the Geoapify API via Jupyter Notebook.. 
 
 The original purpose of the data collection was to review:
-•	Show top 10 suburbs with potential capacity in each state
-•	Installations vs estimated dwellings im each state
-•	Show the number of potential dwellings installations available for installations
-•	Show the top 10 areas for biggest potential growth in each state
-•	Show current capacity vs potential kw capacity in each state & postcode 
-•	Show number of installations in each postcode & region
-•	Show avaerage capacity per dwelling & installation
-•	Show top 10 regions for growth overall
+     Show top 10 suburbs with potential capacity in each state
+     Installations vs estimated dwellings im each state
+     Show the number of potential dwellings installations available for installations
+     Show the top 10 areas for biggest potential growth in each state
+     Show current capacity vs potential kw capacity in each state & postcode 
+     Show number of installations in each postcode & region
+     Show avaerage capacity per dwelling & installation
+     Show top 10 regions for growth overall    
 
 We used SQL to create the database, then power our website using a Python Flask API, and build our website using HTML, CSS, JavaScript & various JavaScript libraries.
 
