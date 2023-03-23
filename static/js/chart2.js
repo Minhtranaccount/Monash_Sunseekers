@@ -108,6 +108,7 @@ init();
       d3.select("#region_details").html("");
       d3.select("#region_details").append("h5").text(`On this page you can select a postcode and compare a few key metrics with those of Australia.`)
       
+      d3.select("#region_details2").html("");
       d3.select("#region_details2").append("h8").text(`The number of current installations for postcode ${activePostcode} in suburb ${activepostcodesuburb} and region ${activepostcoderegion} is ${installations_pc} with a capcity of ${totalcap0_100active_pc} kw, the average capacity per dwelling is ${cap_per_dwel_pc} 
        state is ${activepostcodesate} and the potential per dwelling is ${pot_per_dwel_pc} kw. `);
 
