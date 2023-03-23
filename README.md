@@ -12,7 +12,6 @@ The purpose of the data collection was to review:
 - Current capacity vs potential kw capacity in each state & postcode
 - Show number of installations in each postcode & region
 - Show average capacity per dwelling & installation in each postcode 
-- Show top 10 regions for growth overall
 
 We used SQL to create the database, then power our website using a Python Flask API, and build our website using HTML, CSS, JavaScript & various JavaScript libraries.
 
