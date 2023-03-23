@@ -183,7 +183,7 @@ function createbarchart3(y_ax3, x_ax3, x_ax3) {
   ];
 
   let layout = {
-    title: "Capacity per dwelling",
+    title: "Potential per dwelling",
     yaxis: { title: "Capacity kw" },
     yaxis: {range: [0, 25]}
   };
