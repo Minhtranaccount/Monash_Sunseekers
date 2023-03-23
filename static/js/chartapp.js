@@ -47,12 +47,20 @@ d3.json(url1).then(function(data) {
       ]
     },
     options: {
+      plugins: {
+        title: {
+          align: "center",
+          position: "top",
+          display: true,
+          text: "Installations vs Estimated Dwellings by State",
+      },
       scales: {
         y: {
           beginAtZero: true
         }
       }
     }
+  }
   });
 
   // Create the line graph using D3 and Chart.js
@@ -85,12 +93,20 @@ d3.json(url1).then(function(data) {
       ]
     },
     options: {
-      scales: {
+      plugins: {
+        title: {
+          align: "center",
+          position: "top",
+          display: true,
+          text: "Current KW Capacity vs Potential KW Capacity",
+        },
+        scales: {
         y: {
           beginAtZero: true
         }
       }
     }
+  }
   });
 }).catch(function(error) {
   console.error(error);
