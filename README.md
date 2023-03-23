@@ -8,7 +8,7 @@ This project utilizes data sourced from the Australian PV Institute's website an
 
 The original purpose of the data collection was to review:
 - Show top 10 suburbs with potential capacity in each state
-- Installations vs estimated dwellings im each state
+- Installations vs estimated dwellings in each state
 - Show the number of potential dwellings installations available for installations
 - Show the top 10 areas for biggest potential growth in each state
 - Show current capacity vs potential kw capacity in each state & postcode 
