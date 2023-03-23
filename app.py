@@ -186,7 +186,7 @@ def charts():
 
 # The 2nd chart page
 @app.route("/chart2")
-def reinier():
+def chart2():
     return render_template("chart2.html")
 
 # list the weblinks for each of the above
