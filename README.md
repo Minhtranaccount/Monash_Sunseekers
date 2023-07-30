@@ -2,6 +2,9 @@
 # App Screenshots
 ![image](https://github.com/Minhtranaccount/Monash_Sunseekers/assets/117701483/6d9bb29d-be36-43bf-8af1-0080daa33b6d)
 
+![image](https://github.com/Minhtranaccount/Monash_Sunseekers/assets/117701483/12f8e38f-af30-42dc-b187-99f206a3224b)
+
+![image](https://github.com/Minhtranaccount/Monash_Sunseekers/assets/117701483/584e09ec-559a-4d68-a98d-9ab4341daf86)
 
 
 # About this project:
