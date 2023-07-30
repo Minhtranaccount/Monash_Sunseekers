@@ -1,6 +1,10 @@
 # Project_3 - Monash Sunseekers
+# App Screenshots
+![image](https://github.com/Minhtranaccount/Monash_Sunseekers/assets/117701483/6d9bb29d-be36-43bf-8af1-0080daa33b6d)
 
-About this project:
+
+
+# About this project:
 
 The objective for this project was to analyse data in the solar energy industry and identify regions of Australia with the highest potential for growth in the solar panel installation business. We have created a website that reviews APVI’s solar panel data for postcodes, regions and states and showcase’s our findings.
 
