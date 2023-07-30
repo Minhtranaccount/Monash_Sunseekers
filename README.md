@@ -4,7 +4,7 @@
 
 ![image](https://github.com/Minhtranaccount/Monash_Sunseekers/assets/117701483/12f8e38f-af30-42dc-b187-99f206a3224b)
 
-![image](https://github.com/Minhtranaccount/Monash_Sunseekers/assets/117701483/584e09ec-559a-4d68-a98d-9ab4341daf86)
+![image](https://github.com/Minhtranaccount/Monash_Sunseekers/assets/117701483/5f7034b0-4209-44d8-8a6d-162301e2b11b)
 
 
 # About this project:
