@@ -1,4 +1,4 @@
-# Project_3 - Bootcamp Sunseekers
+# Project_3 - Monash Sunseekers
 
 About this project:
 
